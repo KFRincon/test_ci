@@ -1,0 +1,28 @@
+stages:
+  - install
+  - build
+  - deploy
+
+# Trabajo para instalar dependencias
+install_dependencies:
+  stage: install
+  image: node:16
+  script:
+    - npm install
+
+# Trabajo para hacer build del proyecto
+build_project:
+  stage: build
+  image: node:16
+  script:
+    - npm run build
+
+# Trabajo para desplegar el proyecto (puede ser a un servidor o servicio como Vercel, Netlify, etc.)
+deploy_project:
+  stage: deploy
+  script:
+    - echo "Desplegando proyecto..."
+    # Aquí iría tu script de despliegue, por ejemplo:
+    # - npm run deploy
+  only:
+    - main
